@@ -25,11 +25,10 @@ for face_file in os.listdir(known_faces_dir):
 model = cv2.face.LBPHFaceRecognizer_create()
 
 # Convert the labels to a cv::UMat
-labels = cv2.UMat(np.array(known_labels))
+labels = cv2.UMat(np.array(known_labels), cv2.USAGE_ALLOCATE_DEVICE_MEMORY, cv2.CV_8UC1)
 
 # Train the model with the known faces and labels
 model.train(known_faces, labels)
-
 
 # Set up the video capture object
 cap = cv2.VideoCapture(0)
