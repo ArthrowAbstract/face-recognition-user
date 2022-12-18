@@ -54,6 +54,7 @@ while True:
     faces = cv2.CascadeClassifier('haarcascade_frontalface_default.xml').detectMultiScale(gray, 1.3, 5)
     
     # Recognize the faces
+    # Recognize the faces
     for (x, y, w, h) in faces:
         roi_gray = gray[y:y+h, x:x+w]
         label, confidence = model.predict(roi_gray)
@@ -62,4 +63,4 @@ while True:
         else:
             label_text = 'unknown'
         cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
-        cv2.putText(frame, label_text, (x, y-5), cv2.FONT_HERSHEY
+        cv2.putText(frame, label_text, (x, y-5), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
